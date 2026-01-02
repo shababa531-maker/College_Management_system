@@ -1,0 +1,254 @@
+/* ===== RESET & GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #ff6ec7, #42a5f5, #7c4dff, #fbc02d);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+/* ===== CONTAINER ===== */
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 30px;
+  border-radius: 20px;
+  
+  /* Glass-like background */
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.85),
+    rgba(255,255,255,0.75)
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* Depth and glow */
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.25),
+    inset 0 1px 2px rgba(255,255,255,0.3);
+
+  /* Smooth transition on hover */
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover lift with soft glow */
+.container:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.3),
+    inset 0 2px 4px rgba(255,255,255,0.35);
+}
+
+/* Optional glowing border */
+.container::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #42a5f5, #7c4dff);
+  opacity: 0.3;
+  filter: blur(15px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+
+/* ===== HEADINGS ===== */
+h2 {
+  font-size: 26px;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 20px;
+  color: #334155;
+  margin: 30px 0 10px;
+}
+
+/* ===== FORM ELEMENTS ===== */
+input, select {
+  width: 240px;
+  padding: 10px;
+  margin: 5px 10px 15px 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+input:focus, select:focus {
+  border-color: #1976d2;
+  outline: none;
+}
+
+/* ===== INTERESTING RED BUTTONS ===== */
+button, .logout-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.3);
+}
+
+/* ===== PRIMARY BUTTON ===== */
+button {
+  background: linear-gradient(135deg, #ff0505, #ff4d4d);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #f14646, #ff1a1a);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(255, 0, 0, 0.5);
+}
+
+button:active {
+  transform: scale(0.97);
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
+}
+
+/* ===== LOGOUT BUTTON ===== */
+.logout-btn {
+  background: linear-gradient(135deg, #f00909, #ff3b3b);
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #ff0000);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(220, 38, 38, 0.5);
+}
+
+.logout-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4);
+}
+
+/* ===== OPTIONAL GLOW ANIMATION ===== */
+button::before, .logout-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255,255,255,0.25), rgba(255,255,255,0));
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateX(-100%) rotate(45deg);
+}
+
+button:hover::before, .logout-btn:hover::before {
+  opacity: 1;
+  transform: translateX(100%) rotate(45deg);
+}
+
+/* ===== STYLISH LISTS ===== */
+ul {
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+}
+
+li {
+  background: linear-gradient(135deg, #ffffff, #f0f4ff);
+  padding: 14px 20px;
+  margin-bottom: 12px;
+  border-left: 5px solid #6366f1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect */
+li:hover {
+  transform: translateX(5px) scale(1.02);
+  background: linear-gradient(135deg, #e0e7ff, #dbeafe);
+  box-shadow: 0 8px 20px rgba(99,102,241,0.2);
+}
+
+/* Optional ripple effect on click */
+li:active::after {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: rgba(99,102,241,0.1);
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  border-radius: 10px;
+  pointer-events: none;
+  animation: ripple 0.5s forwards;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Text inside list */
+li span {
+  font-size: 15px;
+  color: #1e293b;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 600px) {
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* ===== MESSAGES ===== */
+.error {
+  color: #dc2626;
+  margin-top: 10px;
+}
+
+.info {
+  color: #2563eb;
+  margin-top: 10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 600px){
+  input, select { width: 100%; }
+  li { flex-direction: column; align-items: flex-start; }
+}
